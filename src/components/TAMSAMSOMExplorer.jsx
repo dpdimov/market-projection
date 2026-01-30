@@ -181,16 +181,17 @@ const TAMSAMSOMExplorer = () => {
     const samRadius = calculations.sam > 0 ? maxRadius * Math.sqrt(calculations.sam / calculations.tam) : 0;
     const somValue = viewMode === 'topDown' ? calculations.somAtHorizonTopDown : calculations.somAtHorizonBottomUp;
     const somRadius = somValue > 0 ? maxRadius * Math.sqrt(somValue / calculations.tam) : 0;
+    const effectiveSomRadius = Math.max(somRadius, 8);
 
-    // Label positions on the right side
-    const tamLabelY = cy - tamRadius * 0.7;
-    const samLabelY = cy - samRadius * 0.5;
-    const somLabelY = cy + Math.max(somRadius * 0.3, 10);
+    // Label positions on the right side - spread them out vertically
+    const tamLabelY = cy - 70;
+    const samLabelY = cy;
+    const somLabelY = cy + 70;
 
-    // Connection points on circles (right side)
-    const tamConnectX = cx + tamRadius * Math.cos(Math.asin((cy - tamLabelY) / tamRadius));
-    const samConnectX = samRadius > 0 ? cx + samRadius * Math.cos(Math.asin((cy - samLabelY) / samRadius)) : cx;
-    const somConnectX = somRadius > 8 ? cx + Math.max(somRadius, 8) * Math.cos(Math.asin((somLabelY - cy) / Math.max(somRadius, 8))) : cx + 8;
+    // Connection points on circles (right side at circle edge)
+    const tamConnectX = cx + tamRadius;
+    const samConnectX = cx + samRadius;
+    const somConnectX = cx + effectiveSomRadius;
 
     return (
       <svg viewBox="0 0 380 320" preserveAspectRatio="xMidYMid meet" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '380px' }}>
@@ -222,24 +223,24 @@ const TAMSAMSOMExplorer = () => {
         <circle cx={cx} cy={cy} r={Math.max(somRadius, 8)} fill="url(#somGrad)" stroke="#6bb8c9" strokeWidth="2" filter="url(#glow)" />
 
         {/* TAM label with connector */}
-        <line x1={tamConnectX} y1={tamLabelY} x2="295" y2={tamLabelY} stroke="#3d5a6a" strokeWidth="1" strokeDasharray="2,2" />
-        <circle cx={tamConnectX} cy={tamLabelY} r="3" fill="#3d5a6a" />
+        <line x1={tamConnectX} y1={cy} x2="295" y2={tamLabelY} stroke="#3d5a6a" strokeWidth="1" strokeDasharray="2,2" />
+        <circle cx={tamConnectX} cy={cy} r="3" fill="#3d5a6a" />
         <text x="300" y={tamLabelY - 6} textAnchor="start" fill="#6b7b8a" fontSize="10" fontWeight="500">TAM</text>
         <text x="300" y={tamLabelY + 10} textAnchor="start" fill="#8aa0b0" fontSize="13" fontFamily="'JetBrains Mono', monospace">{formatBn(calculations.tam)}</text>
 
         {/* SAM label with connector */}
         {samRadius > 10 && (
           <>
-            <line x1={samConnectX} y1={samLabelY} x2="295" y2={samLabelY} stroke="#4a90a4" strokeWidth="1" strokeDasharray="2,2" />
-            <circle cx={samConnectX} cy={samLabelY} r="3" fill="#4a90a4" />
+            <line x1={samConnectX} y1={cy} x2="295" y2={samLabelY} stroke="#4a90a4" strokeWidth="1" strokeDasharray="2,2" />
+            <circle cx={samConnectX} cy={cy} r="3" fill="#4a90a4" />
             <text x="300" y={samLabelY - 6} textAnchor="start" fill="#7b9bab" fontSize="10" fontWeight="500">SAM</text>
             <text x="300" y={samLabelY + 10} textAnchor="start" fill="#9bbaca" fontSize="13" fontFamily="'JetBrains Mono', monospace">{formatBn(calculations.sam)}</text>
           </>
         )}
 
         {/* SOM label with connector */}
-        <line x1={somConnectX} y1={somLabelY} x2="295" y2={somLabelY} stroke="#6bb8c9" strokeWidth="1" strokeDasharray="2,2" />
-        <circle cx={somConnectX} cy={somLabelY} r="3" fill="#6bb8c9" />
+        <line x1={somConnectX} y1={cy} x2="295" y2={somLabelY} stroke="#6bb8c9" strokeWidth="1" strokeDasharray="2,2" />
+        <circle cx={somConnectX} cy={cy} r="3" fill="#6bb8c9" />
         <text x="300" y={somLabelY - 6} textAnchor="start" fill="#4a90a4" fontSize="10" fontWeight="600">SOM Y{timeHorizon}</text>
         <text x="300" y={somLabelY + 10} textAnchor="start" fill="#6bb8c9" fontSize="13" fontFamily="'JetBrains Mono', monospace" fontWeight="500">{formatBn(somValue)}</text>
       </svg>
