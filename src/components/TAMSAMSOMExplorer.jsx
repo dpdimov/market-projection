@@ -197,16 +197,16 @@ const TAMSAMSOMExplorer = () => {
       <svg viewBox="0 0 380 320" preserveAspectRatio="xMidYMid meet" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '380px' }}>
         <defs>
           <radialGradient id="tamGrad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#2d3a4a" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#1a2332" stopOpacity="0.9" />
+            <stop offset="0%" stopColor="#e2e8f0" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0.9" />
           </radialGradient>
           <radialGradient id="samGrad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#3d5a6a" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#2a4050" stopOpacity="0.95" />
+            <stop offset="0%" stopColor="#cbd5e1" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#e2e8f0" stopOpacity="0.95" />
           </radialGradient>
           <radialGradient id="somGrad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#4a90a4" stopOpacity="1" />
-            <stop offset="100%" stopColor="#2d7d8a" stopOpacity="1" />
+            <stop offset="0%" stopColor="#0f766e" stopOpacity="1" />
+            <stop offset="100%" stopColor="#0f766e" stopOpacity="1" />
           </radialGradient>
           <filter id="glow">
             <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
@@ -218,31 +218,31 @@ const TAMSAMSOMExplorer = () => {
         </defs>
 
         {/* Circles */}
-        <circle cx={cx} cy={cy} r={tamRadius} fill="url(#tamGrad)" stroke="#3d5a6a" strokeWidth="2" />
-        <circle cx={cx} cy={cy} r={samRadius} fill="url(#samGrad)" stroke="#4a90a4" strokeWidth="2" />
-        <circle cx={cx} cy={cy} r={Math.max(somRadius, 8)} fill="url(#somGrad)" stroke="#6bb8c9" strokeWidth="2" filter="url(#glow)" />
+        <circle cx={cx} cy={cy} r={tamRadius} fill="url(#tamGrad)" stroke="#cbd5e1" strokeWidth="2" />
+        <circle cx={cx} cy={cy} r={samRadius} fill="url(#samGrad)" stroke="#0f766e" strokeWidth="2" />
+        <circle cx={cx} cy={cy} r={Math.max(somRadius, 8)} fill="url(#somGrad)" stroke="#0d9488" strokeWidth="2" filter="url(#glow)" />
 
         {/* TAM label with connector */}
-        <line x1={tamConnectX} y1={cy} x2="295" y2={tamLabelY} stroke="#3d5a6a" strokeWidth="1" strokeDasharray="2,2" />
-        <circle cx={tamConnectX} cy={cy} r="3" fill="#3d5a6a" />
-        <text x="300" y={tamLabelY - 6} textAnchor="start" fill="#6b7b8a" fontSize="10" fontWeight="500">TAM</text>
+        <line x1={tamConnectX} y1={cy} x2="295" y2={tamLabelY} stroke="#cbd5e1" strokeWidth="1" strokeDasharray="2,2" />
+        <circle cx={tamConnectX} cy={cy} r="3" fill="#cbd5e1" />
+        <text x="300" y={tamLabelY - 6} textAnchor="start" fill="#64748b" fontSize="10" fontWeight="500">TAM</text>
         <text x="300" y={tamLabelY + 10} textAnchor="start" fill="#8aa0b0" fontSize="13" fontFamily="'JetBrains Mono', monospace">{formatBn(calculations.tam)}</text>
 
         {/* SAM label with connector */}
         {samRadius > 10 && (
           <>
-            <line x1={samConnectX} y1={cy} x2="295" y2={samLabelY} stroke="#4a90a4" strokeWidth="1" strokeDasharray="2,2" />
-            <circle cx={samConnectX} cy={cy} r="3" fill="#4a90a4" />
-            <text x="300" y={samLabelY - 6} textAnchor="start" fill="#7b9bab" fontSize="10" fontWeight="500">SAM</text>
-            <text x="300" y={samLabelY + 10} textAnchor="start" fill="#9bbaca" fontSize="13" fontFamily="'JetBrains Mono', monospace">{formatBn(calculations.sam)}</text>
+            <line x1={samConnectX} y1={cy} x2="295" y2={samLabelY} stroke="#0f766e" strokeWidth="1" strokeDasharray="2,2" />
+            <circle cx={samConnectX} cy={cy} r="3" fill="#0f766e" />
+            <text x="300" y={samLabelY - 6} textAnchor="start" fill="#64748b" fontSize="10" fontWeight="500">SAM</text>
+            <text x="300" y={samLabelY + 10} textAnchor="start" fill="#475569" fontSize="13" fontFamily="'JetBrains Mono', monospace">{formatBn(calculations.sam)}</text>
           </>
         )}
 
         {/* SOM label with connector */}
-        <line x1={somConnectX} y1={cy} x2="295" y2={somLabelY} stroke="#6bb8c9" strokeWidth="1" strokeDasharray="2,2" />
-        <circle cx={somConnectX} cy={cy} r="3" fill="#6bb8c9" />
-        <text x="300" y={somLabelY - 6} textAnchor="start" fill="#4a90a4" fontSize="10" fontWeight="600">SOM Y{timeHorizon}</text>
-        <text x="300" y={somLabelY + 10} textAnchor="start" fill="#6bb8c9" fontSize="13" fontFamily="'JetBrains Mono', monospace" fontWeight="500">{formatBn(somValue)}</text>
+        <line x1={somConnectX} y1={cy} x2="295" y2={somLabelY} stroke="#0d9488" strokeWidth="1" strokeDasharray="2,2" />
+        <circle cx={somConnectX} cy={cy} r="3" fill="#0d9488" />
+        <text x="300" y={somLabelY - 6} textAnchor="start" fill="#0f766e" fontSize="10" fontWeight="600">SOM Y{timeHorizon}</text>
+        <text x="300" y={somLabelY + 10} textAnchor="start" fill="#0d9488" fontSize="13" fontFamily="'JetBrains Mono', monospace" fontWeight="500">{formatBn(somValue)}</text>
       </svg>
     );
   };
@@ -250,8 +250,8 @@ const TAMSAMSOMExplorer = () => {
   return (
     <div className="page-wrapper" style={{
       minHeight: '100vh',
-      background: 'linear-gradient(165deg, #0f1419 0%, #1a2332 40%, #0f1419 100%)',
-      color: '#c5d1dc',
+      background: 'linear-gradient(165deg, #f8fafc 0%, #ffffff 40%, #f8fafc 100%)',
+      color: '#334155',
       fontFamily: "'DM Sans', -apple-system, sans-serif"
     }}>
       <style>{`
@@ -265,8 +265,8 @@ const TAMSAMSOMExplorer = () => {
         .industry-btn {
           padding: 10px 16px;
           border: 1px solid rgba(107, 184, 201, 0.15);
-          background: rgba(26, 35, 50, 0.6);
-          color: #7b9bab;
+          background: rgba(241, 245, 249, 0.8);
+          color: #64748b;
           font-size: 12px;
           font-weight: 500;
           cursor: pointer;
@@ -274,19 +274,19 @@ const TAMSAMSOMExplorer = () => {
           border-radius: 6px;
         }
         .industry-btn:hover {
-          background: rgba(45, 58, 74, 0.8);
+          background: rgba(226, 232, 240, 0.8);
           border-color: rgba(107, 184, 201, 0.3);
-          color: #9bbaca;
+          color: #475569;
         }
         .industry-btn.active {
           background: rgba(74, 144, 164, 0.15);
           border-color: rgba(107, 184, 201, 0.5);
-          color: #6bb8c9;
+          color: #0d9488;
         }
 
         .mode-toggle {
           display: flex;
-          background: rgba(26, 35, 50, 0.8);
+          background: rgba(241, 245, 249, 0.9);
           border-radius: 8px;
           padding: 4px;
           border: 1px solid rgba(107, 184, 201, 0.1);
@@ -295,7 +295,7 @@ const TAMSAMSOMExplorer = () => {
           padding: 10px 20px;
           border: none;
           background: transparent;
-          color: #6b7b8a;
+          color: #64748b;
           font-size: 13px;
           font-weight: 500;
           cursor: pointer;
@@ -304,7 +304,7 @@ const TAMSAMSOMExplorer = () => {
         }
         .mode-btn.active {
           background: rgba(74, 144, 164, 0.2);
-          color: #6bb8c9;
+          color: #0d9488;
         }
 
         .slider-row { margin-bottom: 20px; }
@@ -314,10 +314,10 @@ const TAMSAMSOMExplorer = () => {
           margin-bottom: 6px;
           font-size: 12px;
         }
-        .slider-label { color: #7b9bab; }
+        .slider-label { color: #64748b; }
         .slider-value {
           font-family: 'JetBrains Mono', monospace;
-          color: #6bb8c9;
+          color: #0d9488;
           font-weight: 500;
         }
         input[type="range"] {
@@ -332,7 +332,7 @@ const TAMSAMSOMExplorer = () => {
           -webkit-appearance: none;
           width: 14px;
           height: 14px;
-          background: linear-gradient(135deg, #6bb8c9, #4a90a4);
+          background: linear-gradient(135deg, #0d9488, #0f766e);
           border-radius: 50%;
           cursor: pointer;
           box-shadow: 0 2px 8px rgba(107, 184, 201, 0.3);
@@ -348,18 +348,18 @@ const TAMSAMSOMExplorer = () => {
         .geo-checkbox {
           width: 16px;
           height: 16px;
-          accent-color: #4a90a4;
+          accent-color: #0f766e;
           cursor: pointer;
         }
-        .geo-label { flex: 1; font-size: 12px; color: #7b9bab; }
+        .geo-label { flex: 1; font-size: 12px; color: #64748b; }
         .geo-pct {
           font-family: 'JetBrains Mono', monospace;
           font-size: 11px;
-          color: #6bb8c9;
+          color: #0d9488;
         }
 
         .metric-box {
-          background: rgba(26, 35, 50, 0.5);
+          background: rgba(241, 245, 249, 0.8);
           border: 1px solid rgba(107, 184, 201, 0.1);
           border-radius: 10px;
           padding: 16px;
@@ -368,12 +368,12 @@ const TAMSAMSOMExplorer = () => {
         .metric-value {
           font-family: 'JetBrains Mono', monospace;
           font-size: 22px;
-          color: #6bb8c9;
+          color: #0d9488;
           font-weight: 500;
         }
         .metric-label {
           font-size: 10px;
-          color: #5a6a7a;
+          color: #94a3b8;
           text-transform: uppercase;
           letter-spacing: 0.8px;
           margin-top: 4px;
@@ -419,24 +419,24 @@ const TAMSAMSOMExplorer = () => {
         .projection-year {
           font-family: 'JetBrains Mono', monospace;
           font-size: 12px;
-          color: #5a6a7a;
+          color: #94a3b8;
         }
         .projection-bar-container {
           height: 20px;
-          background: rgba(26, 35, 50, 0.5);
+          background: rgba(241, 245, 249, 0.8);
           border-radius: 4px;
           overflow: hidden;
         }
         .projection-bar {
           height: 100%;
-          background: linear-gradient(90deg, #4a90a4, #6bb8c9);
+          background: linear-gradient(90deg, #0f766e, #0d9488);
           border-radius: 4px;
           transition: width 0.3s ease;
         }
         .projection-value {
           font-family: 'JetBrains Mono', monospace;
           font-size: 12px;
-          color: #9bbaca;
+          color: #475569;
           text-align: right;
         }
 
@@ -444,13 +444,13 @@ const TAMSAMSOMExplorer = () => {
           font-size: 11px;
           text-transform: uppercase;
           letter-spacing: 1.5px;
-          color: #5a6a7a;
+          color: #94a3b8;
           margin-bottom: 16px;
           font-weight: 500;
         }
 
         .panel {
-          background: rgba(15, 20, 25, 0.6);
+          background: rgba(255, 255, 255, 0.9);
           border: 1px solid rgba(107, 184, 201, 0.08);
           border-radius: 12px;
           padding: 24px;
@@ -500,13 +500,13 @@ const TAMSAMSOMExplorer = () => {
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         {/* Header */}
         <div style={{ marginBottom: '40px' }}>
-          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '3px', color: '#4a5a6a', marginBottom: '10px' }}>
+          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '3px', color: '#94a3b8', marginBottom: '10px' }}>
             Market Sizing Framework
           </div>
-          <h1 className="page-title" style={{ fontWeight: 300, marginBottom: '12px', color: '#d5e1ec', letterSpacing: '-0.5px' }}>
+          <h1 className="page-title" style={{ fontWeight: 300, marginBottom: '12px', color: '#1e293b', letterSpacing: '-0.5px' }}>
             TAM → SAM → SOM
           </h1>
-          <p style={{ color: '#5a6a7a', fontSize: '14px', maxWidth: '600px', lineHeight: 1.6 }}>
+          <p style={{ color: '#94a3b8', fontSize: '14px', maxWidth: '600px', lineHeight: 1.6 }}>
             Build defensible market projections. Interrogate assumptions at each layer
             and see how they cascade through to obtainable market.
           </p>
@@ -533,7 +533,7 @@ const TAMSAMSOMExplorer = () => {
           padding: '14px 18px',
           marginBottom: '32px',
           fontSize: '13px',
-          color: '#7b9bab'
+          color: '#64748b'
         }}>
           {industryPresets[selectedIndustry]?.description}
         </div>
@@ -548,7 +548,7 @@ const TAMSAMSOMExplorer = () => {
               Bottom-Up
             </button>
           </div>
-          <span style={{ fontSize: '12px', color: '#5a6a7a' }}>
+          <span style={{ fontSize: '12px', color: '#94a3b8' }}>
             {viewMode === 'topDown' ? 'Start with total market, apply filters' : 'Start with unit economics, build upward'}
           </span>
         </div>
@@ -595,7 +595,7 @@ const TAMSAMSOMExplorer = () => {
                 </div>
               ))}
 
-              <div style={{ marginTop: '12px', fontSize: '11px', color: '#5a6a7a' }}>
+              <div style={{ marginTop: '12px', fontSize: '11px', color: '#94a3b8' }}>
                 Selected regions: {(calculations.geoMultiplier * 100).toFixed(0)}% of global TAM
               </div>
             </div>
@@ -665,7 +665,7 @@ const TAMSAMSOMExplorer = () => {
                       onChange={(e) => setGrowthRate(Number(e.target.value))} />
                   </div>
 
-                  <div style={{ marginTop: '12px', fontSize: '11px', color: '#5a6a7a' }}>
+                  <div style={{ marginTop: '12px', fontSize: '11px', color: '#94a3b8' }}>
                     Implied max share ceiling: ~{calculations.impliedMaxShare.toFixed(0)}%
                   </div>
                 </>
@@ -732,13 +732,13 @@ const TAMSAMSOMExplorer = () => {
                 <div className="metric-label">SAM</div>
               </div>
               <div className="metric-box">
-                <div className="metric-value" style={{ color: '#9bbaca' }}>
+                <div className="metric-value" style={{ color: '#475569' }}>
                   {formatBn(viewMode === 'topDown' ? calculations.somAtHorizonTopDown : calculations.somAtHorizonBottomUp)}
                 </div>
                 <div className="metric-label">SOM Y{timeHorizon}</div>
               </div>
               <div className="metric-box">
-                <div className="metric-value" style={{ color: '#8ba090' }}>
+                <div className="metric-value" style={{ color: '#16a34a' }}>
                   {((viewMode === 'topDown' ? calculations.somAtHorizonTopDown : calculations.somAtHorizonBottomUp) / calculations.sam * 100).toFixed(1)}%
                 </div>
                 <div className="metric-label">SAM Capture</div>
@@ -756,10 +756,10 @@ const TAMSAMSOMExplorer = () => {
                 <div key={i} className="waterfall-bar">
                   <div className="waterfall-fill" style={{ width: `${step.pct}%` }} />
                   <div className="waterfall-text">
-                    <span style={{ color: '#9bbaca' }}>{step.label}</span>
+                    <span style={{ color: '#475569' }}>{step.label}</span>
                     <span style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                      {step.filter && <span style={{ color: '#5a6a7a', fontSize: '10px' }}>{step.filter}</span>}
-                      <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#6bb8c9' }}>
+                      {step.filter && <span style={{ color: '#94a3b8', fontSize: '10px' }}>{step.filter}</span>}
+                      <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#0d9488' }}>
                         {formatBn(step.value)}
                       </span>
                     </span>
@@ -767,7 +767,7 @@ const TAMSAMSOMExplorer = () => {
                 </div>
               ))}
 
-              <div style={{ marginTop: '16px', padding: '12px', background: 'rgba(74, 144, 164, 0.08)', borderRadius: '6px', fontSize: '12px', color: '#7b9bab' }}>
+              <div style={{ marginTop: '16px', padding: '12px', background: 'rgba(74, 144, 164, 0.08)', borderRadius: '6px', fontSize: '12px', color: '#64748b' }}>
                 <strong>SAM represents {((calculations.sam / calculations.tam) * 100).toFixed(1)}%</strong> of TAM after applying
                 geographic, segment, channel, and regulatory filters.
               </div>
@@ -787,19 +787,19 @@ const TAMSAMSOMExplorer = () => {
                       <div className="projection-bar-container">
                         <div className="projection-bar" style={{
                           width: `${Math.min(100, (proj.som / calculations.sam) * 100 * 5)}%`,
-                          background: proj.capped ? 'linear-gradient(90deg, #8ba090, #6b8070)' : 'linear-gradient(90deg, #4a90a4, #6bb8c9)'
+                          background: proj.capped ? 'linear-gradient(90deg, #16a34a, #15803d)' : 'linear-gradient(90deg, #0f766e, #0d9488)'
                         }} />
                       </div>
                       <span className="projection-value">
                         {formatBn(proj.som)}
-                        <span style={{ color: '#5a6a7a', fontSize: '10px', marginLeft: '4px' }}>({proj.share.toFixed(1)}%)</span>
+                        <span style={{ color: '#94a3b8', fontSize: '10px', marginLeft: '4px' }}>({proj.share.toFixed(1)}%)</span>
                       </span>
                     </div>
                   ))}
 
-                  <div style={{ marginTop: '20px', padding: '12px', background: 'rgba(107, 184, 201, 0.06)', borderRadius: '6px', fontSize: '11px', color: '#6b7b8a', lineHeight: 1.6 }}>
+                  <div style={{ marginTop: '20px', padding: '12px', background: 'rgba(107, 184, 201, 0.06)', borderRadius: '6px', fontSize: '11px', color: '#64748b', lineHeight: 1.6 }}>
                     Share growth capped at ~{calculations.impliedMaxShare.toFixed(0)}% based on {competitorCount} major competitors.
-                    {calculations.somProjectionsTopDown.some(p => p.capped) && <span style={{ color: '#8ba090' }}> Ceiling reached.</span>}
+                    {calculations.somProjectionsTopDown.some(p => p.capped) && <span style={{ color: '#16a34a' }}> Ceiling reached.</span>}
                   </div>
                 </>
               ) : (
@@ -812,7 +812,7 @@ const TAMSAMSOMExplorer = () => {
                       </div>
                       <span className="projection-value">
                         {formatBn(proj.som)}
-                        <span style={{ color: '#5a6a7a', fontSize: '10px', marginLeft: '4px' }}>({proj.impliedShare.toFixed(2)}%)</span>
+                        <span style={{ color: '#94a3b8', fontSize: '10px', marginLeft: '4px' }}>({proj.impliedShare.toFixed(2)}%)</span>
                       </span>
                     </div>
                   ))}
@@ -821,9 +821,9 @@ const TAMSAMSOMExplorer = () => {
                     <h4 className="section-header" style={{ marginBottom: '12px' }}>Capacity Build-Up</h4>
                     {calculations.bottomUpProjections.map((proj) => (
                       <div key={proj.year} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', padding: '6px 0', borderBottom: '1px solid rgba(107, 184, 201, 0.06)' }}>
-                        <span style={{ color: '#5a6a7a' }}>Y{proj.year}</span>
-                        <span style={{ color: '#7b9bab' }}>{proj.reps} reps</span>
-                        <span style={{ color: '#6bb8c9', fontFamily: "'JetBrains Mono', monospace" }}>{proj.deals} deals</span>
+                        <span style={{ color: '#94a3b8' }}>Y{proj.year}</span>
+                        <span style={{ color: '#64748b' }}>{proj.reps} reps</span>
+                        <span style={{ color: '#0d9488', fontFamily: "'JetBrains Mono', monospace" }}>{proj.deals} deals</span>
                       </div>
                     ))}
                   </div>
@@ -834,14 +834,14 @@ const TAMSAMSOMExplorer = () => {
             <div className="panel" style={{ marginTop: '20px' }}>
               <h3 className="section-header">Sanity Check</h3>
 
-              <div style={{ fontSize: '12px', color: '#7b9bab', lineHeight: 1.7 }}>
+              <div style={{ fontSize: '12px', color: '#64748b', lineHeight: 1.7 }}>
                 {viewMode === 'topDown' ? (
                   <>
                     <p style={{ marginBottom: '12px' }}>
-                      At <strong style={{ color: '#6bb8c9' }}>{formatBn(calculations.somAtHorizonTopDown)}</strong> in Y{timeHorizon},
+                      At <strong style={{ color: '#0d9488' }}>{formatBn(calculations.somAtHorizonTopDown)}</strong> in Y{timeHorizon},
                       you're claiming <strong>{((calculations.somAtHorizonTopDown / calculations.sam) * 100).toFixed(1)}%</strong> of SAM.
                     </p>
-                    <p style={{ color: '#5a6a7a' }}>
+                    <p style={{ color: '#94a3b8' }}>
                       With {competitorCount} competitors, is {calculations.somProjectionsTopDown[timeHorizon-1]?.share.toFixed(1)}% share realistic
                       in {timeHorizon} years? What's your differentiation?
                     </p>
@@ -849,10 +849,10 @@ const TAMSAMSOMExplorer = () => {
                 ) : (
                   <>
                     <p style={{ marginBottom: '12px' }}>
-                      Bottom-up projects <strong style={{ color: '#6bb8c9' }}>{formatBn(calculations.somAtHorizonBottomUp)}</strong> in Y{timeHorizon},
+                      Bottom-up projects <strong style={{ color: '#0d9488' }}>{formatBn(calculations.somAtHorizonBottomUp)}</strong> in Y{timeHorizon},
                       implying <strong>{calculations.bottomUpProjections[timeHorizon-1]?.impliedShare.toFixed(2)}%</strong> SAM capture.
                     </p>
-                    <p style={{ color: '#5a6a7a' }}>
+                    <p style={{ color: '#94a3b8' }}>
                       With {calculations.bottomUpProjections[timeHorizon-1]?.reps} reps closing {dealsPerRepPerYear} deals/year at ${avgDealSize.toLocaleString()} each—is this achievable?
                     </p>
                   </>
