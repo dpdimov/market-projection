@@ -218,8 +218,18 @@ const TAMSAMSOMExplorer = () => {
           </>
         )}
 
-        <text x="160" y="155" textAnchor="middle" fill="#4a90a4" fontSize="10" fontWeight="600">SOM Y{timeHorizon}</text>
-        <text x="160" y="172" textAnchor="middle" fill="#6bb8c9" fontSize="14" fontFamily="'JetBrains Mono', monospace" fontWeight="500">{formatBn(somValue)}</text>
+        {/* SOM labels - position based on circle size */}
+        {somRadius > 25 ? (
+          <>
+            <text x="160" y="155" textAnchor="middle" fill="#4a90a4" fontSize="10" fontWeight="600">SOM Y{timeHorizon}</text>
+            <text x="160" y="172" textAnchor="middle" fill="#6bb8c9" fontSize="14" fontFamily="'JetBrains Mono', monospace" fontWeight="500">{formatBn(somValue)}</text>
+          </>
+        ) : (
+          <>
+            <text x="160" y="200" textAnchor="middle" fill="#4a90a4" fontSize="10" fontWeight="600">SOM Y{timeHorizon}</text>
+            <text x="160" y="215" textAnchor="middle" fill="#6bb8c9" fontSize="12" fontFamily="'JetBrains Mono', monospace" fontWeight="500">{formatBn(somValue)}</text>
+          </>
+        )}
       </svg>
     );
   };
